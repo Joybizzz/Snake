@@ -15,9 +15,15 @@ function createMatrix() {
         arr.push(div);
     }
 }
-function getCell(row, col) {
-
-}
+const getCell = bool => {
+    bool = colorCell();
+    if(bool === false){
+    arr[rand].style.background = 'red';
+    }
+    else{
+        arr[rand].style.background = "white";
+    }
+};
 
 function colorCell(val) {
     if (arr[rand].style.background === 'red'){
@@ -35,51 +41,51 @@ window.onload = function(){
 
     function keyboardClick(e) {
         if (e.keyCode === 39){ //right
-            arr[rand].style.background = "white";
+            getCell();
             if((rand + 1) % 20 === 0){
                 rand -= 19;
-                arr[rand].style.background = 'red';
+                getCell();
                 return;
             }
             rand++;
-            arr[rand].style.background = 'red';
-            console.log(colorCell());
+            getCell();
+            // colorCell;
             return;
         }
         else if (e.keyCode === 37){ //left
-            arr[rand].style.background = "white";
+            getCell();
             if(rand % 20 === 0){
                 rand += 19;
-                arr[rand].style.background = 'red';
+                getCell();
                 return;
             }
             rand--;
-            arr[rand].style.background = 'red';
-            console.log(colorCell());
+            getCell();
+            // colorCell;
             return;
         }
         else if (e.keyCode === 38){ //up
-            arr[rand].style.background = "white";
+            getCell();
             if(rand >=0 && rand < 20){
                 rand += 380;
-                arr[rand].style.background = 'red';
+                getCell();
                 return;
             }
             rand -= 20;
-            arr[rand].style.background = 'red';
-            console.log(colorCell());
+            getCell();
+            // colorCell;
             return;
         }
         else if (e.keyCode === 40){ //down
-            arr[rand].style.background = "white";
+            getCell();
             if(rand >= 380 && rand <= 399){
                 rand -= 380;
-                arr[rand].style.background = 'red';
+                getCell();
                 return;
             }
             rand += 20;
-            arr[rand].style.background = 'red';
-            console.log(colorCell());
+            getCell();
+            // colorCell;
             return;
         }
     }
