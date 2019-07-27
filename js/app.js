@@ -19,8 +19,13 @@ function getCell(row, col) {
 
 }
 
-function colorCell(row, col, val) {
-    
+function colorCell(val) {
+    if (arr[rand].style.background === 'red'){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 window.onload = function(){
@@ -30,31 +35,55 @@ window.onload = function(){
 
     function keyboardClick(e) {
         if (e.keyCode === 39){ //right
-            debugger;
             arr[rand].style.background = "white";
-            arr[rand + 1].style.background = 'red';
-            arr[rand] = arr[rand+1]
+            if((rand + 1) % 20 === 0){
+                rand -= 19;
+                arr[rand].style.background = 'red';
+                return;
+            }
+            rand++;
+            arr[rand].style.background = 'red';
+            console.log(colorCell());
             return;
         }
         else if (e.keyCode === 37){ //left
             arr[rand].style.background = "white";
-            arr[rand - 1].style.background = 'red';
-            arr[rand] = arr[rand - 1]
+            if(rand % 20 === 0){
+                rand += 19;
+                arr[rand].style.background = 'red';
+                return;
+            }
+            rand--;
+            arr[rand].style.background = 'red';
+            console.log(colorCell());
             return;
         }
         else if (e.keyCode === 38){ //up
             arr[rand].style.background = "white";
-            arr[rand - 20].style.background = 'red';
-            arr[rand] = arr[rand - 20]
+            if(rand >=0 && rand < 20){
+                rand += 380;
+                arr[rand].style.background = 'red';
+                return;
+            }
+            rand -= 20;
+            arr[rand].style.background = 'red';
+            console.log(colorCell());
             return;
         }
         else if (e.keyCode === 40){ //down
             arr[rand].style.background = "white";
-            arr[rand + 20].style.background = 'red';
-            arr[rand] = arr[rand + 20]
+            if(rand >= 380 && rand <= 399){
+                rand -= 380;
+                arr[rand].style.background = 'red';
+                return;
+            }
+            rand += 20;
+            arr[rand].style.background = 'red';
+            console.log(colorCell());
             return;
         }
-
     }
+
     addEventListener('keydown', keyboardClick);
+
 }
